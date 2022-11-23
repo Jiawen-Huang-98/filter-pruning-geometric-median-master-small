@@ -1,0 +1,5 @@
+PyThon  version : 3.8.8 (default, Apr 13 2021, 15:08:03) [MSC v.1916 64 bit (AMD64)]
+PyTorch version : 1.10.0
+cuDNN   version : 8200
+Vision  version : 0.11.1
+=> creating model 'resnet56'

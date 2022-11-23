@@ -1,0 +1,110 @@
+save path : ./logs/cifar10_resnet110_norm2_0_324_3_rate0.7
+{'arch': 'resnet20', 'batch_size': 16, 'data_path': './data/cifar.python', 'dataset': 'cifar10', 'decay': 0.0005, 'dist_type': 'l2', 'epoch_prune': 1, 'epochs': 200, 'evaluate': False, 'gammas': [0.1, 0.1], 'layer_begin': 0, 'layer_end': 57, 'layer_inter': 3, 'learning_rate': 0.1, 'manualSeed': 5603, 'momentum': 0.9, 'ngpu': 1, 'pretrain_path': '', 'print_freq': 200, 'rate_dist': 0.1, 'rate_norm': 0.9, 'resume': '', 'save_path': './logs/cifar10_resnet110_norm2_0_324_3_rate0.7', 'schedule': [150, 225], 'start_epoch': 0, 'use_cuda': True, 'use_pretrain': False, 'use_state_dict': False, 'workers': 0}
+Random Seed: 5603
+python version : 3.8.8 (default, Apr 13 2021, 15:08:03) [MSC v.1916 64 bit (AMD64)]
+torch  version : 1.10.0
+cudnn  version : 8200
+Norm Pruning Rate: 0.9
+Distance Pruning Rate: 0.1
+Layer Begin: 0
+Layer End: 57
+Layer Inter: 3
+Epoch prune: 1
+use pretrain: False
+Pretrain path: 
+Dist type: l2
+=> creating model 'resnet20'
+=> network :
+ CifarResNet(
+  (conv_1_3x3): Conv2d(3, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (bn_1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (stage_1): Sequential(
+    (0): ResNetBasicblock(
+      (conv_a): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_a): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_b): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (1): ResNetBasicblock(
+      (conv_a): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_a): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_b): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (2): ResNetBasicblock(
+      (conv_a): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_a): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_b): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (stage_2): Sequential(
+    (0): ResNetBasicblock(
+      (conv_a): Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn_a): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_b): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): DownsampleA(
+        (avg): AvgPool2d(kernel_size=1, stride=2, padding=0)
+      )
+    )
+    (1): ResNetBasicblock(
+      (conv_a): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_a): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_b): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (2): ResNetBasicblock(
+      (conv_a): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_a): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_b): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (stage_3): Sequential(
+    (0): ResNetBasicblock(
+      (conv_a): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn_a): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_b): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): DownsampleA(
+        (avg): AvgPool2d(kernel_size=1, stride=2, padding=0)
+      )
+    )
+    (1): ResNetBasicblock(
+      (conv_a): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_a): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_b): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (2): ResNetBasicblock(
+      (conv_a): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_a): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_b): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (avgpool): AvgPool2d(kernel_size=8, stride=8, padding=0)
+  (classifier): Linear(in_features=64, out_features=10, bias=True)
+)
+=> do not use any checkpoint for resnet20 model
+  **Test** Prec@1 10.000 Prec@5 51.510 Error@1 90.000
+  **Test** Prec@1 10.000 Prec@5 48.870 Error@1 90.000
+the decay_rate now is :1.0
+
+==>>[2022-10-09 13:48:52] [Epoch=000/200] [Need: 00:00:00] [learning_rate=0.1000] [Best : Accuracy=0.00, Error=100.00]
+  Epoch: [000][000/3125]   Time 0.455 (0.455)   Data 0.014 (0.014)   Loss 3.2231 (3.2231)   Prec@1 0.000 (0.000)   Prec@5 25.000 (25.000)   [2022-10-09 13:48:53]
+  Epoch: [000][200/3125]   Time 0.039 (0.042)   Data 0.006 (0.007)   Loss 1.7999 (2.2109)   Prec@1 31.250 (19.683)   Prec@5 93.750 (71.953)   [2022-10-09 13:49:01]
+  Epoch: [000][400/3125]   Time 0.043 (0.041)   Data 0.006 (0.007)   Loss 1.8332 (2.0902)   Prec@1 25.000 (22.537)   Prec@5 81.250 (76.590)   [2022-10-09 13:49:09]
+  Epoch: [000][600/3125]   Time 0.038 (0.040)   Data 0.007 (0.007)   Loss 2.2215 (2.0207)   Prec@1 12.500 (24.553)   Prec@5 87.500 (78.744)   [2022-10-09 13:49:17]
+  Epoch: [000][800/3125]   Time 0.039 (0.040)   Data 0.008 (0.007)   Loss 1.9096 (1.9710)   Prec@1 18.750 (26.428)   Prec@5 81.250 (80.454)   [2022-10-09 13:49:24]
+  Epoch: [000][1000/3125]   Time 0.039 (0.040)   Data 0.006 (0.007)   Loss 1.5852 (1.9230)   Prec@1 37.500 (27.991)   Prec@5 87.500 (81.849)   [2022-10-09 13:49:32]
+  Epoch: [000][1200/3125]   Time 0.039 (0.040)   Data 0.006 (0.007)   Loss 2.0204 (1.8926)   Prec@1 43.750 (29.142)   Prec@5 81.250 (82.738)   [2022-10-09 13:49:40]
+  Epoch: [000][1400/3125]   Time 0.039 (0.040)   Data 0.006 (0.007)   Loss 1.3577 (1.8591)   Prec@1 56.250 (30.434)   Prec@5 93.750 (83.614)   [2022-10-09 13:49:48]
+  Epoch: [000][1600/3125]   Time 0.040 (0.040)   Data 0.006 (0.007)   Loss 1.4828 (1.8343)   Prec@1 50.000 (31.469)   Prec@5 81.250 (84.318)   [2022-10-09 13:49:56]
+  Epoch: [000][1800/3125]   Time 0.040 (0.040)   Data 0.006 (0.006)   Loss 1.7597 (1.8124)   Prec@1 25.000 (32.513)   Prec@5 93.750 (84.849)   [2022-10-09 13:50:04]
+  Epoch: [000][2000/3125]   Time 0.038 (0.040)   Data 0.006 (0.006)   Loss 1.6080 (1.7922)   Prec@1 18.750 (33.333)   Prec@5 93.750 (85.382)   [2022-10-09 13:50:12]
+  Epoch: [000][2200/3125]   Time 0.040 (0.040)   Data 0.006 (0.007)   Loss 1.3829 (1.7691)   Prec@1 43.750 (34.305)   Prec@5 93.750 (85.918)   [2022-10-09 13:50:20]
+  Epoch: [000][2400/3125]   Time 0.044 (0.040)   Data 0.010 (0.007)   Loss 1.5696 (1.7498)   Prec@1 31.250 (35.092)   Prec@5 100.000 (86.321)   [2022-10-09 13:50:28]
+  Epoch: [000][2600/3125]   Time 0.039 (0.040)   Data 0.006 (0.007)   Loss 1.3303 (1.7308)   Prec@1 43.750 (35.974)   Prec@5 87.500 (86.760)   [2022-10-09 13:50:36]
+  Epoch: [000][2800/3125]   Time 0.055 (0.040)   Data 0.012 (0.007)   Loss 1.7494 (1.7099)   Prec@1 37.500 (36.804)   Prec@5 87.500 (87.172)   [2022-10-09 13:50:44]

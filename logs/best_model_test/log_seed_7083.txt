@@ -1,0 +1,15 @@
+save path : ./logs/best_model_test/
+{'arch': 'resnet32', 'batch_size': 16, 'data_path': './data/cifar.python', 'dataset': 'cifar10', 'decay': 0.0005, 'dist_type': 'l2', 'epoch_prune': 1, 'epochs': 800, 'evaluate': False, 'gammas': [10, 0.2, 0.2, 0.2], 'layer_begin': 0, 'layer_end': 90, 'layer_inter': 3, 'learning_rate': 0.1, 'manualSeed': 7083, 'momentum': 0.9, 'ngpu': 1, 'pretrain_path': '', 'print_freq': 200, 'rate_dist': 0.0, 'rate_norm': 0.7, 'resume': '', 'save_path': './logs/best_model_test/', 'schedule': [1, 60, 120, 160], 'start_epoch': 0, 'use_cuda': True, 'use_pretrain': False, 'use_state_dict': False, 'workers': 2}
+Random Seed: 7083
+python version : 3.8.8 (default, Apr 13 2021, 15:08:03) [MSC v.1916 64 bit (AMD64)]
+torch  version : 1.10.0
+cudnn  version : 8200
+Norm Pruning Rate: 0.7
+Distance Pruning Rate: 0.0
+Layer Begin: 0
+Layer End: 90
+Layer Inter: 3
+Epoch prune: 1
+use pretrain: False
+Pretrain path: 
+Dist type: l2
