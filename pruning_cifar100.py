@@ -22,7 +22,7 @@ parser = argparse.ArgumentParser(description='Trains ResNeXt on CIFAR or ImageNe
 parser.add_argument('data_path', type=str, help='Path to dataset')
 parser.add_argument('--dataset', type=str, choices=['cifar10', 'cifar100', 'imagenet', 'svhn', 'stl10'],
                     help='Choose between Cifar10/100 and ImageNet.')
-parser.add_argument('--arch', metavar='ARCH', default='resnet18', choices=model_names,
+parser.add_argument('--arch', metavar='ARCH', default='resnet20', choices=model_names,
                     help='model architecture: ' + ' | '.join(model_names) + ' (default: resnext29_8_64)')
 # Optimization options
 parser.add_argument('--epochs', type=int, default=300, help='Number of epochs to train.')
@@ -59,9 +59,9 @@ parser.add_argument('--pretrain_path', default='', type=str, help='..path of pre
 parser.add_argument('--dist_type', default='l2', type=str, choices=['l2', 'l1', 'cos'], help='distance type of GM')
 
 args = parser.parse_args(['./data/cifar.python', '--dataset', 'cifar100', '--arch', 'resnet32',
-                          '--save_path', './logs/cifar100/resnet32_{}_rate_0.7'.format(time.strftime('%m-%d %H：%M')),
+                          '--save_path', './logs/cifar100/SFP/resnet32_{}_rate_0.7'.format(time.strftime('%m-%d %H：%M')),
                           '--epochs', '300', '--learning_rate', '0.1',
-                          '--batch_size', '16', '--layer_end', '90'])
+                          '--batch_size', '256', '--layer_end', '90'])
 args.use_cuda = args.ngpu > 0 and torch.cuda.is_available()
 
 if args.manualSeed is None:
