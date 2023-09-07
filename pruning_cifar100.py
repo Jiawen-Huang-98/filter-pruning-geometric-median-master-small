@@ -564,7 +564,7 @@ class Mask:
             kernel_length = weight_torch.size()[1] * weight_torch.size()[2] * weight_torch.size()[3]
             for x in range(0, len(similar_index_for_filter)):
                 codebook[similar_index_for_filter[x] * kernel_length: (similar_index_for_filter[x] + 1) * kernel_length] *= self.decay_rate
-            print("similar index done")
+            # print("similar index done")
         else:
             pass
         return codebook
