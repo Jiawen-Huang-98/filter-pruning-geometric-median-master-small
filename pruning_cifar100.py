@@ -46,8 +46,8 @@ parser.add_argument('--workers', type=int, default=2, help='number of data loadi
 # random seed
 parser.add_argument('--manualSeed', type=int, help='manual seed')
 # compress rate
-parser.add_argument('--rate_norm', type=float, default=0.7, help='the remaining ratio of pruning based on Norm')
-parser.add_argument('--rate_dist', type=float, default=0.0, help='the reducing ratio of pruning based on Distance')
+parser.add_argument('--rate_norm', type=float, default=1.0, help='the remaining ratio of pruning based on Norm')
+parser.add_argument('--rate_dist', type=float, default=0.3, help='the reducing ratio of pruning based on Distance')
 
 parser.add_argument('--layer_begin', type=int, default=0, help='compress layer of model')
 parser.add_argument('--layer_end', type=int, default=1, help='compress layer of model')
@@ -59,7 +59,7 @@ parser.add_argument('--pretrain_path', default='', type=str, help='..path of pre
 parser.add_argument('--dist_type', default='l2', type=str, choices=['l2', 'l1', 'cos'], help='distance type of GM')
 
 args = parser.parse_args(['./data/cifar.python', '--dataset', 'cifar100', '--arch', 'resnet20',
-                          '--save_path', './logs/cifar100/SFP/resnet20_{}_rate_0.7'.format(time.strftime('%m-%d %H：%M')),
+                          '--save_path', './logs/cifar100/FPGM/resnet20_{}_rate_0.7'.format(time.strftime('%m-%d %H：%M')),
                           '--epochs', '300', '--learning_rate', '0.1',
                           '--batch_size', '256', '--layer_end', '90'])
 args.use_cuda = args.ngpu > 0 and torch.cuda.is_available()
@@ -688,5 +688,5 @@ class Mask:
 
 
 if __name__ == '__main__':
-    for i in range(3):
+    for i in range(2):
         main()
