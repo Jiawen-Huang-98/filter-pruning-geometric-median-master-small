@@ -58,22 +58,30 @@ parser.add_argument('--use_pretrain', dest='use_pretrain', action='store_true', 
 parser.add_argument('--pretrain_path', default='', type=str, help='..path of pre-trained model')
 parser.add_argument('--dist_type', default='l2', type=str, choices=['l2', 'l1', 'cos'], help='distance type of GM')
 
-args = parser.parse_args(['./data/cifar.python', '--dataset', 'cifar100', '--arch', 'resnet32',
-                          '--save_path', './logs/cifar100/SFP/resnet32_{}_rate_0.7'.format(time.strftime('%m-%d %H：%M')),
+args = parser.parse_args(['./data/cifar.python', '--dataset', 'cifar100', '--arch', 'resnet20',
+                          '--save_path', './logs/cifar100/SFP/resnet20_{}_rate_0.7'.format(time.strftime('%m-%d %H：%M')),
                           '--epochs', '300', '--learning_rate', '0.1',
                           '--batch_size', '256', '--layer_end', '90'])
 args.use_cuda = args.ngpu > 0 and torch.cuda.is_available()
 
-if args.manualSeed is None:
-    args.manualSeed = random.randint(1, 10000)
-random.seed(args.manualSeed)
-torch.manual_seed(args.manualSeed)
-if args.use_cuda:
-    torch.cuda.manual_seed_all(args.manualSeed)
-cudnn.benchmark = True
+# if args.manualSeed is None:
+#     args.manualSeed = random.randint(1, 10000)
+# random.seed(args.manualSeed)
+# torch.manual_seed(args.manualSeed)
+# if args.use_cuda:
+#     torch.cuda.manual_seed_all(args.manualSeed)
+# cudnn.benchmark = True
 
 
 def main():
+    if args.manualSeed is None:
+        args.manualSeed = random.randint(1, 10000)
+    random.seed(args.manualSeed)
+    torch.manual_seed(args.manualSeed)
+    if args.use_cuda:
+        torch.cuda.manual_seed_all(args.manualSeed)
+    cudnn.benchmark = True
+
     # Init logger
     if not os.path.isdir(args.save_path):
         os.makedirs(args.save_path)
@@ -232,8 +240,8 @@ def main():
     for epoch in range(args.start_epoch, args.epochs):
 
         # 使用线性退火方式
-        m.decay_rate = max(0.0, float('%.4f' % (decay_rate_init * (1 - (2*epoch+1) / args.epochs))))
-        # m.decay_rate = 0.2
+        # m.decay_rate = max(0.0, float('%.4f' % (decay_rate_init * (1 - (2*epoch+1) / args.epochs))))
+        # m.decay_rate = 1
         print_log('the decay_rate now is :{}'.format(m.decay_rate), log)
 
         current_learning_rate = adjust_learning_rate(optimizer, epoch, args.gammas, args.schedule)
@@ -680,4 +688,5 @@ class Mask:
 
 
 if __name__ == '__main__':
-    main()
+    for i in range(3):
+        main()
